@@ -25,8 +25,15 @@ public class trees : MonoBehaviour
             return;
         }
         player.HP -= 15;
-
         UImaneger.Instance.ShowNotiText($"Hurt -15\nHP: {player.HP}");
+
+        if (player.HP < 0)
+
+        {
+            UImaneger.Instance.ShowNotiText($"Hurt -15\nHP: {player.HP}");
+            Time.timeScale = 0;
+            UImaneger.Instance.ShowHideRestartbutton(true);
+        }
     }
 
     private void OnCollisionExit(Collision collision)
